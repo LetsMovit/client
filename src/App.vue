@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <div id="nav" class="d-flex justify-content-between">
-      <h1>LetsMovIt</h1>
+      <h1>LetsMovIt!</h1>
       <div>
         <router-link to="/">Home</router-link> |
         <!-- 로그인 된 상태일때 -->
