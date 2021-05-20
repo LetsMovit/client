@@ -29,7 +29,7 @@
           id="passwordConfirmation"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password Again">
         </div>
         <div class="col-md-12 text-center mb-3">
-          <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" @click="signup">Get Started For Free</button>
+          <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" @click.prevent="signup">Get Started For Free</button>
         </div>
         <div class="col-md-12 ">
           <div class="form-group">
