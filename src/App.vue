@@ -8,8 +8,7 @@
         <router-link :to="{name: 'Accounts'}">Accounts</router-link> |
         <router-link :to="{name: 'Movies'}">Movies</router-link> |
         <!-- 로그인 안된 상태일때 -->
-        <router-link :to="{name: 'Login'}">Login</router-link> |
-        <router-link :to="{name: 'Signup'}">Signup</router-link>
+        <router-link :to="{name: 'Join'}">Join</router-link> |
       </div>
     </div>
     <router-view/>

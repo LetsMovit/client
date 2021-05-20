@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Accounts from '@/views/Accounts.vue'
-import Login from '@/views/Login.vue'
-import Signup from '@/views/Signup.vue'
-import Profile from '@/views/Profile.vue'
-import Movies from '@/views/Movies.vue'
+import Home from '../views/Movies/Home.vue'
+import Accounts from '@/views/Accounts/Accounts.vue'
+import Join from '@/views/Accounts/Join.vue'
+import Profile from '@/views/Accounts/Profile.vue'
+import Movies from '@/views/Movies/Movies.vue'
 
 Vue.use(VueRouter)
 
@@ -21,17 +20,12 @@ const routes = [
     component: Accounts,
   },
   {
-    path: '/signup',
-    name: 'Signup',
-    component: Signup,
+    path: '/join',
+    name: 'Join',
+    component: Join,
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-  },
-  {
-    path: '/profile',
+    path: '/accounts/profile',
     name: 'Profile',
     component: Profile,
   },
