@@ -3,8 +3,8 @@
     <MovieCard 
     v-for="movie in $store.state.movies" 
     :key="movie.id"
+    :movie="movie"
     class="col-4 my-3"
-    :movie_info="movie"
     />
   </div>
 </template>
