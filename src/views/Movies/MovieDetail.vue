@@ -1,12 +1,12 @@
 <template>
   <div>
-    {{ movie }}
+    {{ movie_info }}
     <Location/>
   </div>
 </template>
 
 <script>
-import Location from '@/components/MovieDetail/Location'
+import Location from '@/components/MovieDetail/Location.vue'
 
 export default {
   name: 'MovieDetail',
@@ -14,7 +14,7 @@ export default {
     Location,
   },
   props: {
-    movie: Object,
+    movie_info: Object,
   },
 }
 </script>
