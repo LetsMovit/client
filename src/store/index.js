@@ -12,6 +12,8 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     userToken: null,
+    movies: [],
+    locs: []
   },
   mutations: {
     saveJWT: function (state, token) {
@@ -19,6 +21,14 @@ export default new Vuex.Store({
     },
     deleteJWT: function (state) {
       state.userToken = null
+    },
+    saveMovie (state, movie) {
+      console.log('this!!!!!!')
+      console.log(movie)
+      state.movies.push(movie)
+    },
+    saveLocation: function (state, location) {
+      state.locs.push(location)
     }
   },
   actions: {
@@ -37,6 +47,12 @@ export default new Vuex.Store({
     },
     deleteJWT: function (context) {
       context.commit('deleteJWT')
+    },
+    saveMovieList: function (context, movie) {
+      context.commit('saveMovie', movie)
+    },
+    saveLocationList: function (context, location) {
+      context.commit('saveLocation', location)
     }
   },
   getters: {

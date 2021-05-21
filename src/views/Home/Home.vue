@@ -1,24 +1,18 @@
 <template>
   <div class="home">
-   <Main/>
+   <Map/>
    </div>
 </template>
 
 <script>
-import movies from '@/views/Movies/info.json'
+import movies from '@/views/Home/info.json'
 import axios from 'axios'
-import Main from '@/components/Movies/Main'
+import Map from '@/components/Home/Map'
 
 export default {
   name: 'Home',
   components: {
-    Main,
-  },
-  data: function () {
-    return {
-      movie_list: [],
-      location_list: [],
-    }
+    Map,
   },
   methods: {
     getData: function () {
@@ -26,7 +20,7 @@ export default {
         const element = movies[index]
         if (element.model === 'movies.movie') {
           const data = element.fields
-          console.log(data)
+          // console.log(data)
 
           axios.post('http://127.0.0.1:8000/movies/', {
             title: data.title,
@@ -37,7 +31,9 @@ export default {
             movie_id: data.movie_id,
           })
             .then((res)=> {
-              this.movie_list.push(res)
+              // store 에 저장
+              console.log(res)
+              this.$store.dispatch('saveMovieList', res.data)
             })
             .catch((err)=> {
               console.log(err)
@@ -53,7 +49,7 @@ export default {
             name: data2.name,
           })
             .then((res)=>{
-              this.location_list.push(res)
+              this.$store.dispatch('saveLocationList', res.data)
             })
             .catch((err)=>{
               console.log(err)

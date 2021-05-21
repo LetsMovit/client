@@ -66,12 +66,12 @@ export default {
     signup: function () {
       axios({
         method: 'post',
-        url: `${SERVER_URL}accounts/signup/`,
+        url: `${SERVER_URL}/accounts/signup/`,
         data: this.credential,
       })
         .then(res => {
           console.log(res)
-          this.$router.push({name: 'Login'})
+          this.$router.push({name: 'Join'})
         })
         .catch(err => {
           console.log(err)

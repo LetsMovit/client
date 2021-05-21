@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Login from '@/components/Join/Login'
-import Signup from '@/components/Join/Signup'
+import Login from '@/components/Accounts/Login'
+import Signup from '@/components/Accounts/Signup'
 
 export default {
   name: 'Join',
