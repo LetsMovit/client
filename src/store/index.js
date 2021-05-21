@@ -13,7 +13,8 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     movies: [],
-    locs: []
+    locs: [],
+    movieInfo: null,
   },
   mutations: {
     saveJWT: function (state, token) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     saveLocation: function (state, location) {
       state.locs.push(location)
+    },
+    setMovie: function (state, movie) {
+      state.movieInfo = movie
     }
   },
   actions: {
@@ -53,6 +57,9 @@ export default new Vuex.Store({
     },
     saveLocationList: function (context, location) {
       context.commit('saveLocation', location)
+    },
+    setMovie: function (context, movie) {
+      context.commit('setMovie', movie)
     }
   },
   getters: {

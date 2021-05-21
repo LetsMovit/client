@@ -81,6 +81,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #005792;
+  color: #2c3e50;
 }
 </style>

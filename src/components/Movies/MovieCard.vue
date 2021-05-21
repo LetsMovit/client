@@ -2,9 +2,9 @@
   <div class="card" style="width: 18rem;">
     <!-- <img src="" class="card-img-top" alt="..."> -->
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <button class="btn btn-primary" @click="goDetail(movie)">Go somewhere</button>
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <p class="card-text">{{ movie.vote_average }}</p>
+      <button class="btn btn-primary" @click="goDetail(movie)">Movit to {{ movie.title }}</button>
     </div>
   </div>
 </template>
@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     goDetail: function (movie) {
-      this.$router.push({ name: 'MovieDetail', params: {item : movie} })
+      // this.$router.push({ name: 'MovieDetail', params: {item : movie} })
+      this.$router.push({ name: 'MovieDetail' })
+      this.$store.dispatch('setMovie', movie)
     }
   }
 }
