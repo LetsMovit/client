@@ -16,6 +16,9 @@ export default new Vuex.Store({
   mutations: {
     saveJWT: function (state, token) {
       state.userToken = token
+    },
+    deleteJWT: function (state) {
+      state.userToken = null
     }
   },
   actions: {
@@ -26,12 +29,14 @@ export default new Vuex.Store({
         data: credential
       })
         .then(res => {
-          console.log('login')
           context.commit('saveJWT', res.data.token)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    deleteJWT: function (context) {
+      context.commit('deleteJWT')
     }
   },
   getters: {

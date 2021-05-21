@@ -2,7 +2,6 @@
   <div id="app" class="container">
     <div id="nav" class="d-flex justify-content-between">
       <h1>LetsMovIt!</h1>
-      <div class="row">
         <!-- nav start -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
@@ -20,14 +19,13 @@
                    <router-link :to="{name: 'Movies'}">Movies</router-link> |
                 </li>
                 <li class="nav-item dropdown">
-                  <router-link :to="{name: 'Accounts'}">
-                    <p class="dropdown-toggle" id="dropdownMenuButton1"
-                      data-bs-toggle="dropdown" aria-expanded="false">
-                      {{ this.$store.getters.decodedToken.username }}님</p>
-                  </router-link>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><router-link :to="{name: 'Profile'}" class="dropdown-item">Profile</router-link></li>
-                  </ul>
+                  <router-link class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                  to="/">
+                    {{ this.$store.getters.decodedToken.username }}님</router-link>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><router-link class="dropdown-item" :to="{name: 'Profile'}">Profile</router-link></li>
+                      <li><router-link to='#' @click.native="deleteJWT">Logout</router-link></li>
+                    </ul>
                 </li>
               </ul>
             </div>
@@ -47,9 +45,7 @@
           </div>
         </nav>
         <!-- nav end -->
-
       </div>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -57,6 +53,12 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+    deleteJWT: function () {
+      this.$store.dispatch('deleteJWT')
+      this.$router.push({ name: 'Join' })
+    }
+  }
 }
 </script>
 
