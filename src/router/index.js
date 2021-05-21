@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Movies/Home.vue'
-import Accounts from '@/views/Accounts/Accounts.vue'
 import Join from '@/views/Accounts/Join.vue'
 import Profile from '@/views/Accounts/Profile.vue'
 import Movies from '@/views/Movies/Movies.vue'
@@ -15,17 +14,12 @@ const routes = [
     component: Home
   },
   {
-    path: '/accounts',
-    name: 'Accounts',
-    component: Accounts,
-  },
-  {
     path: '/join',
     name: 'Join',
     component: Join,
   },
   {
-    path: '/accounts/profile',
+    path: '/profile',
     name: 'Profile',
     component: Profile,
   },

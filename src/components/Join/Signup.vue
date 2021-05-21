@@ -71,7 +71,7 @@ export default {
       })
         .then(res => {
           console.log(res)
-          this.$router.push({name: 'Home'})
+          this.$router.push({name: 'Login'})
         })
         .catch(err => {
           console.log(err)

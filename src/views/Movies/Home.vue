@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Main from '@/components/Main'
 import movies from '@/views/Movies/info.json'
 import axios from 'axios'
+import Main from '@/components/Movies/Main'
 
 export default {
   name: 'Home',
