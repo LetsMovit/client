@@ -10,19 +10,19 @@
         <form action="#" method="post" name="login">
           <div class="form-group">
             <label for="exampleInputEmail1">UserName</label>
-            <input type="text" name="username"
+            <input type="text" name="username" v-model="credential.username"
             class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Password</label>
-            <input type="password" name="password"
+            <input type="password" name="password" v-model="credential.password"
             id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
           </div>
           <div class="form-group">
             <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
           </div>
           <div class="col-md-12 text-center ">
-            <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+            <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" @click.prevent="getJWT">Login</button>
           </div>
           <div class="col-md-12 ">
             <div class="login-or">
@@ -47,12 +47,25 @@
 </template>
 
 <script>
+
 export default {
   name: 'Login',
+  data: function () {
+    return {
+      credential: {
+        username: '',
+        password: '',
+      }
+    }
+  },
   methods: {
     change: function () {
       this.$emit('change')
-    }
+    },
+    getJWT: function () {
+      this.$store.dispatch('getJWT', this.credential)
+      this.$router.push({ name: 'Home' })
+    },
   }
 }
 </script>

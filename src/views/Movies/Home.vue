@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Main from '@/components/Main'
+import Main from '@/components/Movies/Main'
 
 export default {
   name: 'Home',
