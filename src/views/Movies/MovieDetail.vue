@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ movie_info }}
+    {{ movie }}
     <Location/>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     Location,
   },
   props: {
-    movie_info: Object,
+    movie: Object,
   },
 }
 </script>

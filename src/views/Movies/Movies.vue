@@ -4,7 +4,7 @@
     v-for="movie in $store.state.movies" 
     :key="movie.id"
     class="col-4 my-3"
-    :movie_info="movie"
+    :movie="movie"
     />
   </div>
 </template>
