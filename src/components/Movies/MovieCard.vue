@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <button class="btn btn-primary" @click="goDetail(movie)">Go Detail</button>
+      <button class="btn btn-primary" @click="goDetail(movie)">Go somewhere</button>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     goDetail: function (movie) {
-      this.$router.push({ name: 'MovieDetail', params:movie })
+      this.$router.push({ name: 'MovieDetail', params: {item : movie} })
     }
   }
 }

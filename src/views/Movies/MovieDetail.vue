@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ movie }}
+    {{ this.$route.params.item }}
     <Location/>
   </div>
 </template>
@@ -12,9 +12,6 @@ export default {
   name: 'MovieDetail',
   components: {
     Location,
-  },
-  props: {
-    movie: Object,
   },
 }
 </script>
