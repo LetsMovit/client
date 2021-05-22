@@ -38,9 +38,9 @@ export default {
   a{
     text-decoration:none !important;
     }
-  h1,h2,h3{
-          font-family: 'Kaushan Script', cursive;
-          }
+  /* h1,h2,h3{
+          font-family: Avenir, Helvetica, Arial, sans-serif;
+          } */
   .myform{
           position: relative;
           display: -ms-flexbox;

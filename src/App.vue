@@ -12,19 +12,18 @@
             <!-- 로그인 했을때 -->
             <div v-if="this.$store.getters.decodedToken" class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <li class="nav-item">
-                   <router-link to="/">Home</router-link> |
+                <li class="nav-item mx-3">
+                   <router-link to="/">Home</router-link>
                 </li>
-                <li class="nav-item">
-                   <router-link :to="{name: 'Movies'}">Movies</router-link> |
+                <li class="nav-item mx-3">
+                   <router-link :to="{name: 'Movies'}">Movies</router-link>
                 </li>
-                <li class="nav-item dropdown">
-                  <router-link class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-                  to="/">
+                <li class="nav-item dropdown mx-3">
+                  <router-link class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" to="/">
                     {{ this.$store.getters.decodedToken.username }}님</router-link>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><router-link class="dropdown-item" :to="{name: 'Profile'}">Profile</router-link></li>
-                      <li><router-link to='#' @click.native="deleteJWT">Logout</router-link></li>
+                      <li><router-link to='#' class="dropdown-item" @click.native="deleteJWT">Logout</router-link></li>
                     </ul>
                 </li>
               </ul>
@@ -65,11 +64,11 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
 }
 
 #nav {
@@ -77,10 +76,14 @@ export default {
 }
 
 .navbar {
-  background: #faf1e6
+  background: white;
 }
 
 #nav a.router-link-exact-active {
-  color: #2c3e50;
+  color: black;
+}
+
+.nav-item.mx-3 > a {
+  color: black;
 }
 </style>
