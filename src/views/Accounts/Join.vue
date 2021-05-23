@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-    <div class="col-md-5 mx-auto">
+    <div class="col-md-5 mx-auto my-5 p-5">
       <Login @change="change" v-if="showLogin"/>
       <Signup @change="change" v-if="showSignup"/>
     </div>

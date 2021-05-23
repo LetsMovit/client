@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <img src="@/assets/map.png" alt="" class="w-50">
+  <div class="container">
+    <img src="@/assets/map.png" alt="" class="w-40">
   </div>
 </template>
 

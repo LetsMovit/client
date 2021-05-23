@@ -17,18 +17,18 @@
         </div>
         <div class="p-3">
           <div class="my-1">
-            <p style="font-size: 10px;">장르 | </p>
+            <p >장르 | </p>
           </div>
           <div class="my-1">
-            <p style="font-size: 10px">평점 | {{ movieInfo.vote_average }}점</p>
+            <p>평점 | {{ movieInfo.vote_average }}점</p>
           </div>
         </div>
         <div class="my-5">
           Rating
           <hr>
           <div class="p-3">
-            <p style="font-size: 10px;">별점</p>
-            <p style="font-size: 10px;">내가 작성한 후기</p>
+            <p>별점</p>
+            <p >내가 작성한 후기</p>
           </div>
         </div>
         

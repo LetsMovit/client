@@ -1,28 +1,42 @@
 <template>
-  <div class="container d-flex justify-content-center">
-    <div class="border w-50 rounded border-secondary d-flex flex-column align-items-center p-3 mb-2 bg-dark text-white">
+  <div class="container d-flex justify-content-center" style="width: 75vw;">
+    <div class="border w-100 rounded border-secondary p-3 mb-2 bg-dark text-white">
       <h2>CommentForm</h2>
+      <br>
       <form>
-        <div class="form-group">
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlFile1">Please Select Your Image</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1" @change="handleFileChange"/>
+        <div class="row">
+          <div class="offset-1 col-5 p-5">
+            <!-- rank start -->
+            <div class="form-group d-flex flex-column align-items-start">
+              <label for="Rank">Rank</label>
+              <star-rating id="Rank"
+              @rating-selected ="setRating" 
+              :active-color="['green']"
+              :show-rating="false"
+              />
             </div>
-          </form>
-        </div>
-        <div class="form-group">
-          <label for="Review">Review</label>
-          <textarea class="form-control" id="Review" rows="3" v-model="review"></textarea>
-          <small id="emailHelp" class="form-text text-muted">Your Review will help our Site More Gorgeous!</small>
-        </div>
-        <div class="form-group d-flex flex-column align-items-center">
-          <label for="Rank">Rank</label>
-          <star-rating id="Rank"
-          @rating-selected ="setRating" 
-          :active-color="['green']"
-          :show-rating="false"
-          />
+            <!-- rank end -->
+          </div>
+          <div class="col-5">
+            <!-- file upload start -->
+            <div class="form-group">
+              <form>
+                <div class="form-group d-flex flex-column align-items-start">
+                  <label for="exampleFormControlFile1">Please Select Your Image</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1" @change="handleFileChange"/>
+                </div>
+              </form>
+            </div>
+            <!-- file upload end -->
+            <!-- review start -->
+            <div class="form-group">
+              <br>
+              <label for="Review" class="d-flex flex-column align-items-start">Review</label>
+              <textarea class="form-control" id="Review" rows="3" v-model="review"
+              placeholder="Your Review will help our Site More Gorgeous!"></textarea>
+            </div>
+            <!-- review end -->
+          </div>
         </div>
         <button class="btn btn-primary" @click.prevent="createComment">Submit</button>
       </form>
@@ -85,5 +99,4 @@ export default {
 </script>
 
 <style>
-
 </style>

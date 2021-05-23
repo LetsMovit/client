@@ -12,10 +12,7 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     userToken: null,
-    movies: [],
-    locs: [],
     movieInfo: null,
-    titleflag: [],
   },
   mutations: {
     saveJWT: function (state, token) {
@@ -23,18 +20,6 @@ export default new Vuex.Store({
     },
     deleteJWT: function (state) {
       state.userToken = null
-    },
-    saveMovie (state, movie) {
-      if (state.titleflag.indexOf(movie.title) === -1) {
-        state.titleflag.push(movie.title)
-        state.movies.push(movie)
-        console.log('새로운 movie 생성')
-      } else {
-        console.log('이미 있음')
-      }
-    },
-    saveLocation: function (state, location) {
-      state.locs.push(location)
     },
     setMovie: function (state, movie) {
       state.movieInfo = movie
@@ -56,12 +41,6 @@ export default new Vuex.Store({
     },
     deleteJWT: function (context) {
       context.commit('deleteJWT')
-    },
-    saveMovieList: function (context, movie) {
-      context.commit('saveMovie', movie)
-    },
-    saveLocationList: function (context, location) {
-      context.commit('saveLocation', location)
     },
     setMovie: function (context, movie) {
       context.commit('setMovie', movie)
