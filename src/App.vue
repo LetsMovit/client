@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <div id="nav" class="d-flex justify-content-between">
-      <h1>LetsMovIt!</h1>
+      <img src="@/assets/logo.png" alt="" style="width: 15vw">
         <!-- nav start -->
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
@@ -63,8 +63,10 @@ export default {
 
 
 <style>
+@import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
+
 #app {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family:'Noto Sans Korean'; font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

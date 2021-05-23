@@ -1,12 +1,11 @@
 <template>
-  <div id="movie">
-    <h3>Movie</h3>
+  <div class="p-5">
+    <div class="m-5">
     <MovieInfo/>
-    <hr>
-    <div id="loc">
-      <h3>Place</h3>
     </div>
-    <Location/>
+    <div class="m-5">
+      <Location/>
+    </div>
   </div>
 </template>
 
@@ -24,7 +23,5 @@ export default {
 </script>
 
 <style>
-#loc, #movie {
-  text-align: start;
-}
+
 </style>
