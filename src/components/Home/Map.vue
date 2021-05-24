@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <img src="@/assets/map.png" alt="" class="w-40">
+  <div class="container" style="position: relative;">
+    <img id="map" src="@/assets/map.png" alt="" class="my-5" style="width: 40vw">
   </div>
 </template>
 
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style>
-
+#map:hover {
+  transform: scale(1.2);
+  transition-duration: 1s
+}
 </style>
