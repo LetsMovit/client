@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav" class="d-flex justify-content-between" style="background-color: black">
-      <img src="@/assets/logo.png" alt="" style="width: 14vw">
+      <router-link :to="{ name: 'Home' }"><img src="@/assets/logo.png" alt="" style="width: 14vw"></router-link>
         <!-- nav start -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: black">
           <div class="container-fluid">
@@ -58,7 +58,7 @@ export default {
     deleteJWT: function () {
       this.$store.dispatch('deleteJWT')
       this.$router.push({ name: 'Join' })
-    }
+    },
   }
 }
 </script>

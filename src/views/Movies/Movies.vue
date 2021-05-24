@@ -1,13 +1,10 @@
 <template>
   <div class="container">
-    <div class="row d-flex">
-      <div 
-      v-for="movie in movies" 
-      :key="movie.id"
-      class="col-lg-3 col-sm-5 w-80 my-3 mx-4"
-      >
-        <MovieCard :movie="movie"/>
-      </div>
+    <div class="example-3d">
+      <swiper class="swiper" :options="swiperOption">
+        <swiper-slide v-for="movie in movies" :key="movie.id"><MovieCard :movie="movie"/></swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
     </div>
   </div>
 </template>
@@ -15,17 +12,38 @@
 <script>
 import MovieCard from '@/components/Movies/MovieCard'
 import axios from 'axios'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import "swiper/swiper-bundle.min.css";
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'Movies',
+  title: '3D Coverflow effect',
   components: {
-  MovieCard,
+    MovieCard,
+    Swiper,
+    SwiperSlide,
   },
   data: function () {
     return {
       movies: null,
+      swiperOption: {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows : true
+        },
+        pagination: {
+          el: '.swiper-pagination'
+        },
+      },
     }
   },
   created: function () {
@@ -45,6 +63,34 @@ export default {
 
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .example-3d {
+    width: 100%;
+    height: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .swiper {
+    height: 100%;
+    width: 100%;
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      text-align: center;
+      font-weight: bold;
+      // font-size: $font-size-huge * 2;
+      background-color: #2C8DFB;
+      background-position: center;
+      background-size: cover;
+      color: white;
+    }
+    .swiper-pagination {
+      /deep/ .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background-color: white;
+      }
+    }
+  }
 </style>
