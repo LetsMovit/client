@@ -14,7 +14,7 @@
     "jwt-decode": "^3.1.2",
     "node-sass": "^6.0.0",
     "sass-loader": "^10.2.0",
-    "swiper": "^6.6.2",
+    "swiper": "^5.3.7",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-head": "^2.2.0",

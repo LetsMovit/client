@@ -13,7 +13,7 @@
 import MovieCard from '@/components/Movies/MovieCard'
 import axios from 'axios'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import "swiper/swiper-bundle.min.css";
+import 'swiper/css/swiper.css'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -66,7 +66,7 @@ export default {
 <style lang="scss" scoped>
   .example-3d {
     width: 100%;
-    height: 400px;
+    height: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
   }
@@ -78,11 +78,11 @@ export default {
       justify-content: center;
       align-items: center;
       width: 300px;
-      height: 300px;
+      height: 100%;
       text-align: center;
       font-weight: bold;
       // font-size: $font-size-huge * 2;
-      background-color: #2C8DFB;
+      background-color: white;
       background-position: center;
       background-size: cover;
       color: white;

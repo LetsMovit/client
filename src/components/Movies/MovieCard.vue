@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <div class="card justify-content-between" style="width: 18rem;">
+    <div class="card justify-content-between" style="width: 15rem;">
       <img :src="movie.poster_path" class="card-img-top p-3" alt="..." width="100">
-      <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <p class="card-text">{{ movie.vote_average }}</p>
+      <div class="card-body" style="height: 70%">
+        <h5 class="card-title" style="color: black">{{ movie.title }}</h5>
+        <p class="card-text" style="color: black">{{ movie.vote_average }}</p>
         <button class="btn" style="background-color: white; color: gray;" @click="goDetail(movie)">Movit to {{ movie.title }}</button>
       </div>
     </div>
