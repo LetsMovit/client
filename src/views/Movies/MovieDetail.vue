@@ -3,7 +3,8 @@
     <div class="m-5">
     <MovieInfo/>
     </div>
-    <div class="m-5">
+    <hr>
+    <div class="m-3">
       <Location/>
     </div>
     <div>
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-import Location from '@/components/MovieDetail/Location'
+import Location from '@/components/Locations/Location'
 import MovieInfo from '@/components/MovieDetail/MovieInfo'
 import CommentForm from '@/components/MovieDetail/CommentForm'
 

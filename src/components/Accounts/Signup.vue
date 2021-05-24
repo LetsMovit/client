@@ -29,7 +29,7 @@
           id="passwordConfirmation"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password Again">
         </div>
         <div class="col-md-12 text-center mb-3">
-          <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" @click.prevent="signup">Get Started For Free</button>
+          <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" @click.prevent="signup">Get Started!</button>
         </div>
         <div class="col-md-12 ">
           <div class="form-group">
@@ -69,9 +69,10 @@ export default {
         url: `${SERVER_URL}/accounts/signup/`,
         data: this.credential,
       })
-        .then(res => {
-          console.log(res)
-          this.$router.push({name: 'Join'})
+        .then(() => {
+          console.log()
+          this.change()
+          alert('회원가입 완료!')
         })
         .catch(err => {
           console.log(err)
