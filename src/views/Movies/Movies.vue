@@ -46,10 +46,19 @@ export default {
       },
     }
   },
+  methods: {
+    setToken : function () { // header 내용에 토큰 붙여주기
+      const config = {
+         Authorization : `JWT ${this.$store.state.userToken}`
+      }
+      return config
+    },
+  },
   created: function () {
     axios({
       method: 'get',
       url: `${SERVER_URL}/movies/`,
+      headers : this.setToken(),
     })
       .then( res => {
         // console.log(res.data)

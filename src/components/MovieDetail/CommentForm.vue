@@ -33,6 +33,7 @@
               <br>
               <label for="Review" class="d-flex flex-column align-items-start">Review</label>
               <textarea class="form-control" id="Review" rows="3" v-model="review"
+              
               placeholder="Your Review will help our Site More Gorgeous!"></textarea>
             </div>
             <!-- review end -->
@@ -57,22 +58,32 @@ export default {
     return {
       rating: 0,
       image: null,
-      review: ''
+      review: '',
     }
   },
   methods: {
     setRating: function(rating){
       this.rating= rating
     },
+    setToken : function () { // header 내용에 토큰 붙여주기
+      const config = {
+         Authorization : `JWT ${this.$store.state.userToken}`
+      }
+      return config
+    },
     createComment: function() {
       console.log(this.$store.state.movie_info)
 
       const loc_pk = this.$store.state.movie_info.id
-      axios.post(
-        `http://localhost:8000/${loc_pk}/comments/`, {
+      axios({
+        method: 'post',
+        url: `http://localhost:8000/${loc_pk}/comments/`,
+        headers: this.setToken(),
+        data: {
           review: this.review,
           rank: this.rating,
           img: this.image,
+          }
         })
           .then(()=>{
             axios.get(
@@ -80,6 +91,7 @@ export default {
             )
               .then((res)=> {
                 this.$store.Comments_about_Movie = res.data
+                console.log(res.data)
               })
               .catch((err)=> {
                 console.log(err)
