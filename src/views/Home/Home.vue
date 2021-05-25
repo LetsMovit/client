@@ -1,18 +1,18 @@
 <template>
   <div class="home">
-   <Map/>
+   <Korea/>
    <Poster/>
    </div>
 </template>
 
 <script>
-import Map from '@/components/Home/Map'
+import Korea from '@/components/Home/Korea'
 import Poster from '@/components/Home/Poster'
 
 export default {
   name: 'Home',
   components: {
-    Map,
+    Korea,
     Poster,
   },  
   

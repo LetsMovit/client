@@ -1,6 +1,6 @@
 <template>
   <div class="card text-center">
-    {{ location }}
+    <!-- {{ location }} -->
     <div class="card-header">
       <p class="fs-5 mb-0 fw-bolder">"{{ location.name }}"</p>
       {{ location.address }}
