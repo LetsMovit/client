@@ -7,7 +7,7 @@
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
     <div class="card-footer text-muted">
-      <button class="border-0 bg-transparent" :v-if="liked.liked" @click="getLike">🤍</button>
+      <button class="border-0 bg-transparent" @click="clickLike">🤍</button>
       {{ liked }}
       <!-- {{ location.id }}
       {{ this.$store.userToken }} -->
@@ -41,7 +41,6 @@ export default {
         this.initMap();
     } else {
         const script = document.createElement('script');
-        /* global kakao */
         script.onload = () => kakao.maps.load(this.initMap);
         script.src = `http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${API_KEY}`;
         document.head.appendChild(script);
@@ -61,13 +60,13 @@ export default {
           level: 3
         };
 
-        var map2 = new kakao.maps.Map(container, options);
+        var map = new kakao.maps.Map(container, options);
 
         var markerPosition  = new kakao.maps.LatLng(this.addr.lat,this.addr.lon); 
         var marker = new kakao.maps.Marker({
               position: markerPosition
         });
-        marker.setMap(map2);
+        marker.setMap(map);
 
         var iwContent = `<img src="${this.location.img_url}" style="max-width: 40%; height: auto;">`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
@@ -78,7 +77,7 @@ export default {
         // 마커에 마우스오버 이벤트를 등록합니다
         kakao.maps.event.addListener(marker, 'mouseover', function() {
           // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-          infowindow.open(map2, marker);
+          infowindow.open(map, marker);
         });
 
         // 마커에 마우스아웃 이벤트를 등록합니다
@@ -88,6 +87,20 @@ export default {
         });
     },
     getLike() {
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/movies/${this.location.id}/like/`,
+        headers: this.setToken(),
+      })
+        .then( res =>{
+          console.log(res)
+          this.liked = res.data
+        })
+        .catch( err =>{
+          console.log(err)
+        })
+    },
+    clickLike() {
       axios({
         method: 'post',
         url: `${SERVER_URL}/movies/${this.location.id}/like/`,
@@ -100,7 +113,7 @@ export default {
         .catch( err =>{
           console.log(err)
         })
-    },
+    }
   },
   created: function () {
     this.getLike()

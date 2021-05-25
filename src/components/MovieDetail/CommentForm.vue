@@ -2,6 +2,7 @@
   <div class="container d-flex justify-content-center" style="width: 75vw;">
     <div class="border w-100 rounded border-secondary p-3 mb-2 bg-dark text-white">
       <h2>CommentForm</h2>
+      {{ locationInfo.id }}
       <br>
       <form>
         <div class="row">
@@ -33,7 +34,6 @@
               <br>
               <label for="Review" class="d-flex flex-column align-items-start">Review</label>
               <textarea class="form-control" id="Review" rows="3" v-model="review"
-              
               placeholder="Your Review will help our Site More Gorgeous!"></textarea>
             </div>
             <!-- review end -->
@@ -49,16 +49,23 @@
 import StarRating from 'vue-star-rating'
 import axios from 'axios'
 
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
+
 export default {
   name: 'CommentForm',
   components: {
     StarRating,
+  },
+  props: {
+    movie: Object,
   },
   data: function () {
     return {
       rating: 0,
       image: null,
       review: '',
+      locationInfo: this.$store.state.locationInfo
     }
   },
   methods: {
@@ -72,37 +79,37 @@ export default {
       return config
     },
     createComment: function() {
-      console.log(this.$store.state.movie_info)
 
-      const loc_pk = this.$store.state.movie_info.id
+
+      let formData = new FormData();
+      let imagefile = this.image
+      formData.append('image', imagefile)
+      formData.append('content', this.review)
+      formData.append('rank', this.rating)
+
       axios({
         method: 'post',
-        url: `http://localhost:8000/${loc_pk}/comments/`,
-        headers: this.setToken(),
-        data: {
-          review: this.review,
-          rank: this.rating,
-          img: this.image,
-          }
+        url: `${SERVER_URL}/movies/${this.locationInfo.id}/comments/`,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `JWT ${this.$store.state.userToken}`
+        },
+      })
+        .then(res => {
+          console.log(res)
         })
-          .then(()=>{
-            axios.get(
-              `http://localhost:8000/${loc_pk}/comments/`
-            )
-              .then((res)=> {
-                this.$store.Comments_about_Movie = res.data
-                console.log(res.data)
-              })
-              .catch((err)=> {
-                console.log(err)
-              })
-          })
-      
+        .catch(err => {
+          console.log(err)
+        })
+
     },
     handleFileChange(e) {
       // Whenever the file changes, emit the 'input' event with the file data.
       // this.$emit('input', e.target.files[0])
-      this.image = e.target.files[0]            
+      this.image = e.target.files[0]  
+      // console.log(e.target.files[0].name)   
+      console.log(this.image)       
     }
   },
 }
