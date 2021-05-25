@@ -8,7 +8,9 @@
       <Location/>
     </div>
     <div>
-      <CommentForm/>
+      <CommentForm
+      :movie="movie"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +27,9 @@ export default {
     Location,
     CommentForm,
   },
+  props: {
+    movie: Object,
+  }
 }
 </script>
 

@@ -13,6 +13,7 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     movieInfo: null,
+    locationInfo: null,
   },
   mutations: {
     saveJWT: function (state, token) {

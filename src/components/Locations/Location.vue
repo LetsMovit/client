@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid">
-    {{ movieInfo }}
     <LocationNavbar
     class="border border-5"
     :locations="locations"
@@ -13,7 +12,7 @@
         />
       </div>
       <div class="col-7">
-        asdf
+        <CommentAccodion/>
       </div>
     </div>
   </div>
@@ -21,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import CommentAccodion from '@/components/Locations/CommentAccodion'
 import LocationNavbar from '@/components/Locations/LocationNavbar'
 import LocationCard from '@/components/Locations/LocationCard'
 
@@ -37,6 +37,7 @@ export default {
   components: {
     LocationNavbar,
     LocationCard,
+    CommentAccodion,
   },
   methods: {
     setToken : function () { // header 내용에 토큰 붙여주기
