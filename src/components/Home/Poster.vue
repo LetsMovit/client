@@ -18,7 +18,7 @@
     <!-- 두번째 이미지 end -->
     <!-- 세번째 이미지 start -->
     <div id="poster3" class="my-2 py-5">
-      <h3>지역</h3>
+      <h3>{{ MainLocs[0].name }}</h3>
       <p>장소이름</p>
       <i class="ion-ios-arrow-right" style="color: black">Go!</i>
     </div>
@@ -62,9 +62,17 @@ export default {
     return {
       movies: null,
       locs: null,
+      numbers: [2, 5, 8, 9, 11, 4],
+      MainLocs: []
     }
   },
   methods: {
+    setToken : function () { // header 내용에 토큰 붙여주기
+      const config = {
+         Authorization : `JWT ${this.$store.state.userToken}`
+      }
+      return config
+    },
     getMovies: function () {
       axios({
       method: 'get',
@@ -78,29 +86,35 @@ export default {
           console.log(err)
         })
     },
-    getLocations : function () {
-      axios({
-        method: 'get',
-        url: `${SERVER_URL}/movies/locations/`,
-      })
-        .then( res => {
-          this.locs = res.data
-          console.log(this.locs)
-        })
-        .catch( err => {
-          console.log(err)
-        })
-    },
     move: function (movie) {
       // this.$router.push({ name: 'MovieDetail', params: {item : movie} })
       this.$store.dispatch('setMovie', movie)
       this.$router.push({ name: 'MovieDetail' })
     },
+    getLocations: function () {
+      let temp = []
+      for (let index = 0; index < this.numbers.length; index++) {
+        const movie_id = this.numbers[index];
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/movies/${movie_id}/locations/`,
+          headers: this.setToken()
+        })
+          .then(res =>{
+            temp.push(res.data[0])
+          })
+          .catch(err =>{
+            console.log(err)
+          })
+      this.MainLocs = temp
+      }
+    },
+
   },
   created: function () {
     this.getMovies(),
     this.getLocations()
-  },
+  }
 }
 </script>
 
