@@ -7,8 +7,8 @@
     <div class="border border-5 row p-4">
       <div class="col-5 d-flex flex-column align-items-center">
         <LocationCard
-        :location="this.locations[0]"
         style="width: 100%;"
+        :currentLoc="currentLoc"
         />
       </div>
       <div class="col-7">
@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+
 import CommentAccodion from '@/components/Locations/CommentAccodion'
 import LocationNavbar from '@/components/Locations/LocationNavbar'
 import LocationCard from '@/components/Locations/LocationCard'
@@ -32,6 +33,7 @@ export default {
     return {
       movieInfo: this.$store.state.movieInfo,
       locations: null,
+      currentLoc: null,
     }
   },
   components: {
@@ -55,12 +57,16 @@ export default {
       })
         .then( res => {
           this.locations = res.data
-          console.log(res.data)
+          // console.log(res.data)
+
+          this.$store.dispatch('setCurrentLoc', this.locations[0])
+          this.currentLoc = this.$store.state.currentLocation
         })
         .catch( err => {
           console.log(err)
         })
     }
+    
   },
   created : function () {
     this.getLocations()

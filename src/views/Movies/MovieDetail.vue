@@ -27,6 +27,11 @@ export default {
     Location,
     CommentForm,
   },
+  data: function () {
+    return {
+      movieInfo: this.$store.state.movieInfo
+    }
+  },
   props: {
     movie: Object,
   }

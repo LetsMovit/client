@@ -14,6 +14,8 @@ export default new Vuex.Store({
     userToken: null,
     movieInfo: null,
     locationInfo: null,
+    currentLocation: null,
+    change: false,
   },
   mutations: {
     saveJWT: function (state, token) {
@@ -24,6 +26,12 @@ export default new Vuex.Store({
     },
     setMovie: function (state, movie) {
       state.movieInfo = movie
+    },
+    setCurrentLoc: function (state, location) {
+      state.currentLocation = location
+    },
+    change: function (state) {
+      state.change = !state.change
     }
   },
   actions: {
@@ -45,6 +53,13 @@ export default new Vuex.Store({
     },
     setMovie: function (context, movie) {
       context.commit('setMovie', movie)
+    },
+    setCurrentLoc: function (context, location) {
+      // console.log(location, 'asdfsdfasdf')
+      context.commit('setCurrentLoc', location)
+    },
+    change: function (context) {
+      context.commit('change')
     }
   },
   getters: {

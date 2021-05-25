@@ -2,7 +2,7 @@
   <div class="container d-flex justify-content-center" style="width: 75vw;">
     <div class="border w-100 rounded border-secondary p-3 mb-2 bg-dark text-white">
       <h2>CommentForm</h2>
-      {{ locationInfo.id }}
+      {{ $store.state.currentLocation.id }}
       <br>
       <form>
         <div class="row">
@@ -65,7 +65,7 @@ export default {
       rating: 0,
       image: null,
       review: '',
-      locationInfo: this.$store.state.locationInfo
+      locationInfo: this.$store.state.currentLocation
     }
   },
   methods: {
@@ -80,7 +80,6 @@ export default {
     },
     createComment: function() {
 
-
       let formData = new FormData();
       let imagefile = this.image
       formData.append('image', imagefile)
@@ -93,10 +92,7 @@ export default {
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Authorization': `JWT ${this.$store.state.userToken}`
-
-
-          
+          'Authorization': `JWT ${this.$store.state.userToken}`          
         },
       })
         .then(res => {
@@ -108,10 +104,7 @@ export default {
 
     },
     handleFileChange(e) {
-      // Whenever the file changes, emit the 'input' event with the file data.
-      // this.$emit('input', e.target.files[0])
-      this.image = e.target.files[0]  
-      // console.log(e.target.files[0].name)   
+      this.image = e.target.files[0]
       console.log(this.image)       
     }
   },
