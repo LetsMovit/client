@@ -2,7 +2,7 @@
   <div>
     <!-- 첫번째 이미지 start -->
     <div id="poster1" class="my-2 py-5">
-      <h3>{{ locs }}</h3>
+      <h3>{{ movies[2].title | getLoc }}</h3>
       <p>장소이름</p>
       <i class="ion-ios-arrow-right" style="color: black">Go!</i>
     </div>
@@ -63,6 +63,8 @@ export default {
       movies: null,
       locs: null,
     }
+  },
+  filters: {
   },
   methods: {
     getMovies: function () {
