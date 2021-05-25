@@ -94,6 +94,9 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `JWT ${this.$store.state.userToken}`
+
+
+          
         },
       })
         .then(res => {
