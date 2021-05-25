@@ -64,8 +64,6 @@ export default {
       locs: null,
     }
   },
-  filters: {
-  },
   methods: {
     getMovies: function () {
       axios({
