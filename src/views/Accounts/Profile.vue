@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 mt-3">
+    <div class="row justify-content-center my-5">
+      <div class="col-md-8 mt-3 my-5">
         <div class="card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header text-white" style="background-image:url('@/assets/user-cover.jpg')">
@@ -9,30 +9,32 @@
             <h5 class="widget-user-desc text-right">Web Designer</h5>
           </div>
           <div class="widget-user-image">
-            <img class="img-circle" src="" alt="User Avatar">
+            <img class="img-circle my-3" src="" alt="User Avatar">
+            <p>username</p>
+            <p>e-mail</p>
           </div>
           <div class="card-footer">
             <div class="row">
               <div class="col-sm-4 border-right">
                 <div class="description-block">
-                  <h5 class="description-header">3,200</h5>
-                  <span class="description-text">SALES</span>
+                  <h5 class="description-header">like genre's count</h5>
+                  <span class="description-text">genre</span>
                 </div>
                 <!-- /.description-block -->
               </div>
               <!-- /.col -->
               <div class="col-sm-4 border-right">
                 <div class="description-block">
-                  <h5 class="description-header">13,000</h5>
-                  <span class="description-text">FOLLOWERS</span>
+                  <h5 class="description-header">like locations' count</h5>
+                  <span class="description-text">location</span>
                 </div>
                 <!-- /.description-block -->
               </div>
               <!-- /.col -->
               <div class="col-sm-4">
                 <div class="description-block">
-                  <h5 class="description-header">35</h5>
-                  <span class="description-text">PRODUCTS</span>
+                  <h5 class="description-header">comments' count</h5>
+                  <span class="description-text">comments</span>
                 </div>
                 <!-- /.description-block -->
               </div>

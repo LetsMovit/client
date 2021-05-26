@@ -22,7 +22,7 @@
           <!-- Modal -->
             <div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <div class="modal-content p-5">
+                <div class="modal-content p-5" style="width: 50vw;">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
                       {{ movieInfo.title }}
@@ -30,7 +30,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <iframe :src="youtubeId" frameborder="0"></iframe>
+                    <iframe :src="youtubeId" frameborder="0" style="width: 640px; height: 350px"></iframe>
                   </div>
                 </div>
               </div>

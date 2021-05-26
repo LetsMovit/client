@@ -2,7 +2,7 @@
   <div class="container">
     <div class="example-3d">
       <swiper class="swiper" :options="swiperOption">
-        <swiper-slide v-for="movie in movies" :key="movie.id"><MovieCard :movie="movie"/></swiper-slide>
+        <swiper-slide class="my-5" v-for="movie in movies" :key="movie.id"><MovieCard :movie="movie"/></swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>

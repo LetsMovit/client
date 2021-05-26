@@ -79,8 +79,6 @@ export default {
       return config
     },
     createComment: function() {
-
-
       let formData = new FormData();
       let imagefile = this.image
       formData.append('image', imagefile)
@@ -94,9 +92,6 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `JWT ${this.$store.state.userToken}`
-
-
-          
         },
       })
         .then(res => {
@@ -110,7 +105,7 @@ export default {
     handleFileChange(e) {
       // Whenever the file changes, emit the 'input' event with the file data.
       // this.$emit('input', e.target.files[0])
-      this.image = e.target.files[0]  
+      this.image = e.target.files[0]
       // console.log(e.target.files[0].name)   
       console.log(this.image)       
     }
