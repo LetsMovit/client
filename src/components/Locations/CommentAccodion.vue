@@ -15,11 +15,12 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
+          <!-- {{ comments[1] }} -->
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
+          <!-- <img :src="comments[1].image" alt=""> -->
           <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
         </div>
       </div>
@@ -51,7 +52,12 @@ export default {
   },
   data: function () {
     return {
-      comments: null
+      comments: null,
+    }
+  },
+  watch: {
+    currentLoc: function () {
+        this.getReviews()
     }
   },
   methods: {
@@ -73,11 +79,13 @@ export default {
             const element = res.data[index];
             element.image = `${SERVER_URL}${element.image}`
           }
+          console.log(res.data)
           this.comments = res.data
           console.log(this.comments)
         })
         .catch(err => {
           console.log(err)
+          console.log(123123123)
         })
     },
   },
