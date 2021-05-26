@@ -1,16 +1,13 @@
 <template>
   <div class="card text-center">
-    <!-- {{ location }} -->
     <div class="card-header">
-      <p class="fs-5 mb-0 fw-bolder">"{{ location.name }}"</p>
-      {{ location.address }}
+      <p class="fs-5 mb-0 fw-bolder">"{{ currentLoc.name }}"</p>
+      {{ currentLoc.address }}
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
     <div class="card-footer text-muted">
       <button class="border-0 bg-transparent" @click="clickLike">🤍</button>
       {{ liked }}
-      <!-- {{ location.id }}
-      {{ this.$store.userToken }} -->
       <p></p>
     </div>
   </div>
@@ -24,27 +21,44 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'LocationCard',
-  components: {
-  },
   props: {
-    location: Object,
+    currentLoc: Object,
+  },
+  components: {
   },
   data: function() {
     return {
-      addr: {lat: this.location.lat,
-            lon: this.location.lon},
-      liked: null
+      locationNow: this.$store.state.currentLocation,
+      addr: null,
+      liked: null,
+      change: this.$store.state.change,
     }
   },
+  watch: {
+    currentLoc: function () {
+      console.log('asdfasdfsdf')
+      setTimeout(()=>{
+        this.addr = {lat: this.currentLoc.lat,
+                     lon: this.currentLoc.lon}
+      }, 100)
+      setTimeout(()=>{
+        this.initMap()
+      }, 500)
+      this.getLike()
+    }
+  },
+
   mounted() {
-    if (window.kakao && window.kakao.maps) {
-        this.initMap();
-    } else {
-        const script = document.createElement('script');
-        script.onload = () => kakao.maps.load(this.initMap);
-        script.src = `http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${API_KEY}`;
-        document.head.appendChild(script);
+    setTimeout(()=> {
+      if (window.kakao && window.kakao.maps) {
+          this.initMap();
+      } else {
+          const script = document.createElement('script');
+          script.onload = () => kakao.maps.load(this.initMap);
+          script.src = `http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${API_KEY}`;
+          document.head.appendChild(script);
       }
+    }, 1200)
   },
   methods: {
     setToken : function () { // header 내용에 토큰 붙여주기
@@ -68,7 +82,7 @@ export default {
         });
         marker.setMap(map);
 
-        var iwContent = `<img src="${this.location.img_url}" style="max-width: 40%; height: auto;">`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        var iwContent = `<img src="${this.currentLoc.img_url}" style="max-width: 50%; class="w-100" height: auto;">`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
         var infowindow = new kakao.maps.InfoWindow({
             content : iwContent
@@ -89,7 +103,7 @@ export default {
     getLike() {
       axios({
         method: 'get',
-        url: `${SERVER_URL}/movies/${this.location.id}/like/`,
+        url: `${SERVER_URL}/movies/${this.currentLoc.id}/like/`,
         headers: this.setToken(),
       })
         .then( res =>{
@@ -103,7 +117,7 @@ export default {
     clickLike() {
       axios({
         method: 'post',
-        url: `${SERVER_URL}/movies/${this.location.id}/like/`,
+        url: `${SERVER_URL}/movies/${this.currentLoc.id}/like/`,
         headers: this.setToken(),
       })
         .then( res =>{
@@ -113,12 +127,18 @@ export default {
         .catch( err =>{
           console.log(err)
         })
-    }
+    },
   },
   created: function () {
-    this.getLike()
+    // console.log(this.$store.state)
+    setTimeout(()=>{
+      this.addr = {lat: this.$store.state.currentLocation.lat,
+                   lon: this.$store.state.currentLocation.lon}
+      this.getLike()
+    }, 200)
   }
 }
+
 
 </script>
 
