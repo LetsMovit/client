@@ -6,11 +6,12 @@
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
     <div class="card-footer text-muted">
-      <button class="border-0 bg-transparent" @click="clickLike">
-        <i v-if="liked.isClicked" class="fas fa-heart"></i>
-        <!-- </button> -->
-      <!-- <button class="border-0 bg-transparent" @click="clickLike"> -->
-        <i v-else class="far fa-heart"></i></button>
+      <button v-if="liked.isClicked === true" class="border-0 bg-transparent" @click="clickLike">
+        ❤️
+      </button>
+      <button v-else-if="liked.isClicked === false" class="border-0 bg-transparent" @click="clickLike">
+        🤍
+      </button>
       {{ liked.like_cnt }}
       <p></p>
     </div>

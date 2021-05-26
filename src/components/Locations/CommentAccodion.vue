@@ -77,7 +77,7 @@ export default {
   created: function () {
     setTimeout(()=>{
       this.getReviews()
-    }, 1000)
+    }, 2000)
   }
 }
 </script>
