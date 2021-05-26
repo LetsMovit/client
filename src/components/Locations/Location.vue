@@ -16,29 +16,30 @@
         <CommentAccodion :currentLoc="currentLoc"/>
         <button class="btn btn-primary mt-4 offset-10 col-2 p-1"
         data-bs-toggle="modal" data-bs-target="#commentformmodal" >New Comment</button>
-        <!-- Modal -->
-            <div class="modal fade" id="commentformmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content p-5" style="width: 60vw;">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      {{ movieInfo.title }}
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <CommentForm
-                    :movie="movie"
-                    :currentLoc="currentLoc"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- modal end -->
       </div>
     </div>
+    <!-- Modal -->
+      <div class="modal fade" id="commentformmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
+          <div class="modal-content p-4 mt-3" style="width: 50vw;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                {{ movieInfo.title }}
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <CommentForm
+              :movie="movie"
+              :currentLoc="currentLoc"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal end -->
   </div>
+  
 </template>
 
 <script>

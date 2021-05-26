@@ -44,7 +44,8 @@
             <!-- review end -->
           </div>
         </div>
-        <button class="btn btn-primary" @click.prevent="createComment">Submit</button>
+        <button class="btn btn-primary" @click.prevent="createComment"
+        data-bs-dismiss="modal" aria-label="Close">Submit</button>
       </form>
     </div>
   </div>
@@ -103,7 +104,9 @@ export default {
         },
       })
         .then(res => {
+          const modal = document.querySelector('.modal')
           console.log(res)
+          modal.classList.add('hidden')
         })
         .catch(err => {
           console.log(err)
