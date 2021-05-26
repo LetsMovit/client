@@ -16,6 +16,7 @@ export default new Vuex.Store({
     locationInfo: null,
     currentLocation: null,
     change: false,
+    liked: null,
   },
   mutations: {
     saveJWT: function (state, token) {
@@ -30,8 +31,8 @@ export default new Vuex.Store({
     setCurrentLoc: function (state, location) {
       state.currentLocation = location
     },
-    change: function (state) {
-      state.change = !state.change
+    changeLike: function (state, liked) {
+      state.liked = liked
     }
   },
   actions: {
@@ -58,8 +59,8 @@ export default new Vuex.Store({
       // console.log(location, 'asdfsdfasdf')
       context.commit('setCurrentLoc', location)
     },
-    change: function (context) {
-      context.commit('change')
+    changeLike: function (context, liked) {
+      context.commit('changLike', liked)
     }
   },
   getters: {
@@ -70,8 +71,12 @@ export default new Vuex.Store({
       else {
         return null
       }
-    }
+    },
+    changeLatLng: function (state) {
+      return state.currentLocation
+    },
   },
+
   modules: {
   }
 })

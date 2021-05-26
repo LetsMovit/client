@@ -2,7 +2,8 @@
   <div class="container d-flex justify-content-center" style="width: 75vw;">
     <div class="border w-100 rounded border-secondary p-3 mb-2 bg-dark text-white">
       <h2>CommentForm</h2>
-      {{ $store.state.currentLocation.id }}
+      <!-- {{ $store.state.currentLocation.id }} -->
+      {{ currentLoc.id }}
       <br>
       <form>
         <div class="row">
@@ -59,20 +60,21 @@ export default {
   },
   props: {
     movie: Object,
+    currentLoc: Object,
   },
   data: function () {
     return {
       rating: 0,
       image: null,
       review: '',
-      locationInfo: this.$store.state.currentLocation
+      locationInfo: this.currentLoc
     }
   },
   methods: {
     setRating: function(rating){
       this.rating= rating
     },
-    setToken : function () { // header 내용에 토큰 붙여주기
+    setToken: function () { // header 내용에 토큰 붙여주기
       const config = {
          Authorization : `JWT ${this.$store.state.userToken}`
       }
@@ -106,8 +108,18 @@ export default {
     handleFileChange(e) {
       this.image = e.target.files[0]
       console.log(this.image)       
+    },
+    initLocation: function () {
+      this.locationInfo = this.$store.state.locationInfo
     }
   },
+  created: function () {
+    setTimeout(()=>{
+      console.log('qqqqqqqqqqqqqqqqqqq')
+      console.log(this.$store.state.locationInfo)
+      this.initLocation()
+    }, 1000)
+  }
 }
 
 

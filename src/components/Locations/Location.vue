@@ -3,6 +3,7 @@
     <LocationNavbar
     class="border border-5"
     :locations="locations"
+    v-on:changeLatLng="changeLatLng"
     />
     <div class="border border-5 row p-4">
       <div class="col-5 d-flex flex-column align-items-center">
@@ -42,7 +43,11 @@ export default {
     CommentAccodion,
   },
   methods: {
-    setToken : function () { // header 내용에 토큰 붙여주기
+    changeLatLng: function(location) {
+      this.currentLoc = location
+      this.$emit('changeLatLng', location)
+    },
+    setToken: function () { // header 내용에 토큰 붙여주기
       const config = {
          Authorization : `JWT ${this.$store.state.userToken}`
       }
@@ -60,7 +65,9 @@ export default {
           // console.log(res.data)
 
           this.$store.dispatch('setCurrentLoc', this.locations[0])
-          this.currentLoc = this.$store.state.currentLocation
+          setTimeout(()=>{
+            this.currentLoc = this.$store.state.currentLocation
+          }, 1000)
         })
         .catch( err => {
           console.log(err)

@@ -5,11 +5,13 @@
     </div>
     <hr>
     <div class="m-3">
-      <Location/>
+      <Location
+      v-on:changeLatLng="changeLatLng"/>
     </div>
     <div>
       <CommentForm
       :movie="movie"
+      :currentLoc="currentLoc"
       />
     </div>
   </div>
@@ -27,13 +29,21 @@ export default {
     Location,
     CommentForm,
   },
-  data: function () {
-    return {
-      movieInfo: this.$store.state.movieInfo
-    }
-  },
   props: {
     movie: Object,
+  },
+  data: function () {
+    return {
+      movieInfo: this.$store.state.movieInfo,
+      currentLoc: this.$store.state.currentLocation,
+    }
+  },
+  methods: {
+    changeLatLng: function (location) {
+      this.currentLoc = location
+    },
+  },
+  created : function () {
   }
 }
 </script>

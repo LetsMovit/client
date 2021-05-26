@@ -8,6 +8,7 @@
     v-for="location in locations"
     :key="location.id"
     :location="location"
+    v-on:changeLatLng="changeLatLng"
     />
     </div>
   </div>
@@ -23,6 +24,11 @@ export default {
   },
   props: {
     locations: Array,
+  },
+  methods: {
+    changeLatLng: function (location) {
+      this.$emit('changeLatLng', location)
+    }
   }
 }
 </script>

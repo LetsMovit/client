@@ -1,8 +1,8 @@
 <template>
   <div class="card text-center">
     <div class="card-header">
-      <p class="fs-5 mb-0 fw-bolder">"{{ $store.state.currentLocation.name }}"</p>
-      {{ $store.state.currentLocation.address }}
+      <p class="fs-5 mb-0 fw-bolder">"{{ currentLoc.name }}"</p>
+      {{ currentLoc.address }}
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
     <div class="card-footer text-muted">
@@ -31,30 +31,23 @@ export default {
       locationNow: this.$store.state.currentLocation,
       addr: null,
       liked: null,
-      change: this.$store.state.change
+      change: this.$store.state.change,
     }
   },
   watch: {
-    addr: function () {
-    setTimeout(()=>{
-      this.addr = {lat: this.$store.state.currentLocation.lat,
-                   lon: this.$store.state.currentLocation.lon}
+    currentLoc: function () {
+      console.log('asdfasdfsdf')
+      setTimeout(()=>{
+        this.addr = {lat: this.currentLoc.lat,
+                     lon: this.currentLoc.lon}
+      }, 100)
+      setTimeout(()=>{
+        this.initMap()
+      }, 500)
       this.getLike()
-    }, 200)
-    setTimeout(()=> {
-      if (window.kakao && window.kakao.maps) {
-          this.initMap();
-      } else {
-          const script = document.createElement('script');
-          script.onload = () => kakao.maps.load(this.initMap);
-          script.src = `http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${API_KEY}`;
-          document.head.appendChild(script);
-        }
-      this.getLike()
-
-    }, 1200)
     }
   },
+
   mounted() {
     setTimeout(()=> {
       if (window.kakao && window.kakao.maps) {
@@ -64,7 +57,7 @@ export default {
           script.onload = () => kakao.maps.load(this.initMap);
           script.src = `http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${API_KEY}`;
           document.head.appendChild(script);
-        }
+      }
     }, 1200)
   },
   methods: {
@@ -137,16 +130,15 @@ export default {
     },
   },
   created: function () {
-    
     // console.log(this.$store.state)
     setTimeout(()=>{
       this.addr = {lat: this.$store.state.currentLocation.lat,
                    lon: this.$store.state.currentLocation.lon}
       this.getLike()
     }, 200)
-    
   }
 }
+
 
 </script>
 
