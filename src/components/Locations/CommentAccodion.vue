@@ -3,12 +3,12 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          {{ currentLoc }}
+          {{ comments[0] }}
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          <img :src="comments[0].image" alt="" style="max-width: 15vw;">
         </div>
       </div>
     </div>
@@ -49,6 +49,11 @@ export default {
   props: {
     currentLoc: Object,
   },
+  data: function () {
+    return {
+      comments: null
+    }
+  },
   methods: {
     setToken : function () { // header 내용에 토큰 붙여주기
       const config = {
@@ -64,12 +69,14 @@ export default {
         headers: this.setToken()
       })
         .then(res => {
-          console.log('여기 보세요')
-          console.log(res)
-          console.log(this.currentLoc.id)
+          for (let index = 0; index < res.data.length; index++) {
+            const element = res.data[index];
+            element.image = `${SERVER_URL}${element.image}`
+          }
+          this.comments = res.data
+          console.log(this.comments)
         })
         .catch(err => {
-          console.log('에러')
           console.log(err)
         })
     },
@@ -77,7 +84,7 @@ export default {
   created: function () {
     setTimeout(()=>{
       this.getReviews()
-    }, 1000)
+    }, 2000)
   }
 }
 </script>
