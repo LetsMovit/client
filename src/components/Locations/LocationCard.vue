@@ -116,9 +116,6 @@ export default {
         .then( res =>{
           console.log(res)
           this.liked = res.data
-          this.empty = !this.liked.isClicked
-          this.full = this.liked.isClicked
-          console.log(this.full, this.empty)
         })
         .catch( err =>{
           console.log(err)
@@ -149,7 +146,7 @@ export default {
       this.addr = {lat: this.$store.state.currentLocation.lat,
                    lon: this.$store.state.currentLocation.lon}
       this.getLike()
-    }, 200)
+    }, 500)
   }
 }
 
