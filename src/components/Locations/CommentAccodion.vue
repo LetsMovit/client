@@ -57,6 +57,7 @@ export default {
       return config
     },
     getReviews: function () {
+      console.log('getReviews 실행!')
       axios({
         method: 'get',
         url: `${SERVER_URL}/movies/${this.currentLoc.id}/comments/`,
@@ -74,7 +75,9 @@ export default {
     },
   },
   created: function () {
-    this.getReviews()
+    setTimeout(()=>{
+      this.getReviews()
+    }, 1000)
   }
 }
 </script>

@@ -6,8 +6,12 @@
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
     <div class="card-footer text-muted">
-      <button class="border-0 bg-transparent" @click="clickLike">🤍</button>
-      {{ liked }}
+      <button class="border-0 bg-transparent" @click="clickLike">
+        <i v-if="liked.isClicked" class="fas fa-heart"></i>
+        <!-- </button> -->
+      <!-- <button class="border-0 bg-transparent" @click="clickLike"> -->
+        <i v-else class="far fa-heart"></i></button>
+      {{ liked.like_cnt }}
       <p></p>
     </div>
   </div>
@@ -32,6 +36,8 @@ export default {
       addr: null,
       liked: null,
       change: this.$store.state.change,
+      full: null,
+      empty: null,
     }
   },
   watch: {
@@ -109,6 +115,9 @@ export default {
         .then( res =>{
           console.log(res)
           this.liked = res.data
+          this.empty = !this.liked.isClicked
+          this.full = this.liked.isClicked
+          console.log(this.full, this.empty)
         })
         .catch( err =>{
           console.log(err)
@@ -123,6 +132,10 @@ export default {
         .then( res =>{
           console.log(res)
           this.liked = res.data
+          
+          this.empty = !this.liked.isClicked
+          this.full = this.liked.isClicked
+          console.log(this.liked.isClicked)
         })
         .catch( err =>{
           console.log(err)

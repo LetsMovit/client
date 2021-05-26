@@ -3,7 +3,6 @@
     <div class="m-5">
     <MovieInfo/>
     </div>
-    <hr>
     <div class="m-3">
       <Location
       v-on:changeLatLng="changeLatLng"/>
