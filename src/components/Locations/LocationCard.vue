@@ -5,14 +5,14 @@
       {{ currentLoc.address }}
     </div>
       <div id="map" class="w-100" style="height:300px;"></div>
-    <div class="card-footer text-muted">
+    <div class="card-footer text-muted d-flex">
       <button v-if="liked.isClicked === true" class="border-0 bg-transparent" @click="clickLike">
         ❤️
       </button>
       <button v-else-if="liked.isClicked === false" class="border-0 bg-transparent" @click="clickLike">
         🤍
       </button>
-      {{ liked.like_cnt }}
+      {{ liked.like_cnt }} 명이 "{{ currentLoc.name }}" 을 좋아합니다.
       <p></p>
     </div>
   </div>
@@ -37,13 +37,10 @@ export default {
       addr: null,
       liked: null,
       change: this.$store.state.change,
-      full: null,
-      empty: null,
     }
   },
   watch: {
     currentLoc: function () {
-      console.log('asdfasdfsdf')
       setTimeout(()=>{
         this.addr = {lat: this.currentLoc.lat,
                      lon: this.currentLoc.lon}
@@ -78,7 +75,7 @@ export default {
         var container = document.getElementById('map');
         var options = {
           center: new kakao.maps.LatLng(this.addr.lat,this.addr.lon),
-          level: 3
+          level: 5
         };
 
         var map = new kakao.maps.Map(container, options);
@@ -114,11 +111,7 @@ export default {
         headers: this.setToken(),
       })
         .then( res =>{
-          console.log(res)
           this.liked = res.data
-          this.empty = !this.liked.isClicked
-          this.full = this.liked.isClicked
-          console.log(this.full, this.empty)
         })
         .catch( err =>{
           console.log(err)
@@ -131,12 +124,7 @@ export default {
         headers: this.setToken(),
       })
         .then( res =>{
-          console.log(res)
           this.liked = res.data
-          
-          this.empty = !this.liked.isClicked
-          this.full = this.liked.isClicked
-          console.log(this.liked.isClicked)
         })
         .catch( err =>{
           console.log(err)

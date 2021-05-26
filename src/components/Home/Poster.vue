@@ -1,55 +1,55 @@
 <template>
   <div>
     <!-- 첫번째 이미지 start -->
-    <div id="poster1" class="my-2 py-5">
-      <h3>{{ MainLocs[0].name }}</h3>
+    <div id="poster1" class="my-1 py-3">
+      <h5>{{ MainLocs[0].name }}</h5>
       <p>{{ MainLocs[0].address[0] + ' ' + MainLocs[0].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster1" class="poster" :src="this.movies[MainLocs[0].movie - 1].poster_path" @click="move(movies[MainLocs[0].movie - 1])">
     <!-- 첫번째 이미지 end -->
     <!-- 두번째 이미지 start -->
-    <div id="poster2" class="my-2 py-5">
-      <h3>{{ MainLocs[1].name }}</h3>
+    <div id="poster2" class="my-1 py-3">
+      <h5>{{ MainLocs[1].name }}</h5>
       <p>{{ MainLocs[1].address[0] + ' ' + MainLocs[1].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster2" class="poster" :src="this.movies[MainLocs[1].movie - 1].poster_path" @click="move(movies[MainLocs[1].movie - 1])">
     <!-- 두번째 이미지 end -->
     <!-- 세번째 이미지 start -->
-    <div id="poster3" class="my-2 py-5">
-      <h3>{{ MainLocs[2].name }}</h3>
+    <div id="poster3" class="my-1 py-3">
+      <h5>{{ MainLocs[2].name }}</h5>
       <p>{{ MainLocs[2].address[0] + ' ' + MainLocs[2].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster3" class="poster" :src="this.movies[MainLocs[2].movie - 1].poster_path" @click="move(movies[MainLocs[2].movie - 1])">
     <!-- 세번째 이미지 end -->
     <!-- 네번째 이미지 start -->
-    <div id="poster4" class="my-2 py-5">
-      <h4>{{ MainLocs[3].name }}</h4>
+    <div id="poster4" class="my-1 py-3">
+      <h5>{{ MainLocs[3].name }}</h5>
       <p>{{ MainLocs[3].address[0] + ' ' + MainLocs[3].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster4" class="poster" :src="this.movies[MainLocs[3].movie - 1].poster_path" @click="move(movies[MainLocs[3].movie - 1])">
     <!-- 네번째 이미지 end -->
     <!-- 다섯번째 이미지 start -->
-    <div id="poster5" class="my-2 py-5">
-      <h3>{{ MainLocs[4].name }}</h3>
+    <div id="poster5" class="my-1 py-3">
+      <h5>{{ MainLocs[4].name }}</h5>
       <p>{{ MainLocs[4].address[0] + ' ' + MainLocs[4].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster5" class="poster" :src="this.movies[MainLocs[4].movie - 1].poster_path" @click="move(movies[MainLocs[4].movie - 1])">
     <!-- 다섯번째 이미지 end -->
     <!-- 여섯번째 이미지 start -->
-    <div id="poster6" class="my-2 py-5">
-      <h3>{{ MainLocs[5].name }}</h3>
+    <div id="poster6" class="my-1 py-3">
+      <h5>{{ MainLocs[5].name }}</h5>
       <p>{{ MainLocs[5].address[0] + ' ' + MainLocs[5].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster6" class="poster" :src="this.movies[MainLocs[5].movie - 1].poster_path" @click="move(movies[MainLocs[5].movie - 1])">
     <!-- 여섯번째 이미지 end -->
     <!-- 일곱번째 이미지 start -->
-    <div id="poster7" class="my-2 py-5">
+    <div id="poster7" class="my-1 py-3">
       <h5>{{ MainLocs[6].name }}</h5>
       <p>{{ MainLocs[6].address[0] + ' ' + MainLocs[6].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
@@ -57,15 +57,15 @@
     <img id="poster7" class="poster" :src="this.movies[MainLocs[6].movie - 1].poster_path" @click="move(movies[MainLocs[6].movie - 1])">
     <!-- 일곱번째 이미지 end -->
     <!-- 여덟번째 이미지 start -->
-    <div id="poster8" class="my-2 py-5">
-      <h3>{{ MainLocs[7].name }}</h3>
+    <div id="poster8" class="my-1 py-3">
+      <h5>{{ MainLocs[7].name }}</h5>
       <p>{{ MainLocs[7].address[0] + ' ' + MainLocs[7].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
     </div>
     <img id="poster8" class="poster" :src="this.movies[MainLocs[7].movie - 1].poster_path" @click="move(movies[MainLocs[7].movie - 1])">
     <!-- 여덟번째 이미지 end -->
     <!-- 아홉번째 이미지 start -->
-    <div id="poster9" class="my-2 py-5">
+    <div id="poster9" class="my-1 py-3">
       <h5>{{ MainLocs[8].name }}</h5>
       <p>{{ MainLocs[8].address[0] + ' ' + MainLocs[8].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
@@ -73,7 +73,7 @@
     <img id="poster9" class="poster" :src="this.movies[MainLocs[8].movie - 1].poster_path" @click="move(movies[MainLocs[8].movie - 1])">
     <!-- 아홉번째 이미지 end -->
     <!-- 열번째 이미지 start -->
-    <div id="poster10" class="my-2 py-5">
+    <div id="poster10" class="my-1 py-3">
       <h5>{{ MainLocs[9].name }}</h5>
       <p>{{ MainLocs[9].address[0] + ' ' + MainLocs[9].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>
@@ -81,7 +81,7 @@
     <img id="poster10" class="poster" :src="this.movies[MainLocs[9].movie - 1].poster_path" @click="move(movies[MainLocs[9].movie - 1])">
     <!-- 열번째 이미지 end -->
     <!-- 열한번째 이미지 start -->
-    <div id="poster11" class="my-2 py-5">
+    <div id="poster11" class="my-1 py-3">
       <h5>{{ MainLocs[10].name }}</h5>
       <p>{{ MainLocs[10].address[0] + ' ' + MainLocs[10].address[1] }}</p>
       <i class="ion-ios-arrow-right" style="color: black"> Go!</i>

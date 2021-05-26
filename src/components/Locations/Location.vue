@@ -14,8 +14,8 @@
       </div>
       <div class="col-7">
         <CommentAccodion :currentLoc="currentLoc"/>
-        <button class="btn btn-primary mt-4 offset-11 col-1"
-        data-bs-toggle="modal" data-bs-target="#commentformmodal">write</button>
+        <button class="btn btn-primary mt-4 offset-10 col-2 p-1"
+        data-bs-toggle="modal" data-bs-target="#commentformmodal" >New Comment</button>
         <!-- Modal -->
             <div class="modal fade" id="commentformmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
