@@ -17,12 +17,12 @@
             {{ movieInfo.title }}
           </h5>
           <a href="" @click.prevent="searchYoutube(movieInfo.title)"
-          data-bs-toggle="modal" data-bs-target="#exampleModa2">
+          data-bs-toggle="modal" data-bs-target="#youtubemodal">
             <i class="fab fa-youtube fa-2x m-1" style="color: red;"></i></a>
           <!-- Modal -->
-            <div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="youtubemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <div class="modal-content p-5" style="width: 50vw;">
+                <div class="modal-content p-5" style="width: 760px">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
                       {{ movieInfo.title }}

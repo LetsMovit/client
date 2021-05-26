@@ -3,7 +3,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Accordion Item #1
+          {{ currentLoc }}
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -40,9 +40,43 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
 export default {
   name: 'CommentAccodion',
-} 
+  props: {
+    currentLoc: Object,
+  },
+  methods: {
+    setToken : function () { // header 내용에 토큰 붙여주기
+      const config = {
+         Authorization : `JWT ${this.$store.state.userToken}`
+      }
+      return config
+    },
+    getReviews: function () {
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/movies/${this.currentLoc.id}/comments/`,
+        headers: this.setToken()
+      })
+        .then(res => {
+          console.log('여기 보세요')
+          console.log(res)
+          console.log(this.currentLoc.id)
+        })
+        .catch(err => {
+          console.log('에러')
+          console.log(err)
+        })
+    },
+  },
+  created: function () {
+    this.getReviews()
+  }
+}
 </script>
 
 <style>

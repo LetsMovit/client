@@ -1,25 +1,11 @@
 <template>
-  <div class="container d-flex justify-content-center" style="width: 75vw;">
-    <div class="border w-100 rounded border-secondary p-3 mb-2 bg-dark text-white">
-      <h2>CommentForm</h2>
-      <!-- {{ $store.state.currentLocation.id }} -->
-      {{ currentLoc.id }}
+  <div class="container d-flex justify-content-center">
+    <div class="border w-100 rounded border-secondary p-5 mb-2 bg-dark text-white" style="width: 720px;">
+      <h2>{{ currentLoc.name }}</h2>
       <br>
       <form>
         <div class="row">
-          <div class="offset-1 col-5 p-5">
-            <!-- rank start -->
-            <div class="form-group d-flex flex-column align-items-start">
-              <label for="Rank">Rank</label>
-              <star-rating id="Rank"
-              @rating-selected ="setRating" 
-              :active-color="['green']"
-              :show-rating="false"
-              />
-            </div>
-            <!-- rank end -->
-          </div>
-          <div class="col-5">
+          <div class="col-6">
             <!-- file upload start -->
             <div class="form-group">
               <form>
@@ -30,6 +16,18 @@
               </form>
             </div>
             <!-- file upload end -->
+          </div>
+          <div class="col-6">
+            <!-- rank start -->
+            <div class="form-group d-flex flex-column align-items-start">
+              <label for="Rank">Rank</label>
+              <star-rating id="Rank"
+              @rating-selected ="setRating" 
+              :active-color="['green']"
+              :show-rating="false"
+              />
+            </div>
+            <!-- rank end -->
             <!-- review start -->
             <div class="form-group">
               <br>
@@ -89,7 +87,7 @@ export default {
 
       axios({
         method: 'post',
-        url: `${SERVER_URL}/movies/${this.locationInfo.id}/comments/`,
+        url: `${SERVER_URL}/movies/${this.currentLoc.id}/comments/`,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
