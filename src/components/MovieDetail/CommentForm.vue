@@ -31,6 +31,12 @@
             <!-- review start -->
             <div class="form-group">
               <br>
+              <label for="Review" class="d-flex flex-column align-items-start">Title</label>
+              <input class="form-control" v-model="title" type="text">
+
+            </div>
+            <div class="form-group">
+              <br>
               <label for="Review" class="d-flex flex-column align-items-start">Review</label>
               <textarea class="form-control" id="Review" rows="3" v-model="review"
               placeholder="Your Review will help our Site More Gorgeous!"></textarea>
@@ -62,6 +68,7 @@ export default {
   },
   data: function () {
     return {
+      title: null,
       rating: 0,
       image: null,
       review: '',
@@ -81,6 +88,7 @@ export default {
     createComment: function() {
       let formData = new FormData();
       let imagefile = this.image
+      formData.append('title', this.title)
       formData.append('image', imagefile)
       formData.append('content', this.review)
       formData.append('rank', this.rating)
