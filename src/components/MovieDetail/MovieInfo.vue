@@ -27,10 +27,10 @@
                     <h5 class="modal-title" id="exampleModalLabel">
                       {{ movieInfo.title }}
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="stop"></button>
                   </div>
                   <div class="modal-body">
-                    <iframe :src="youtubeId" frameborder="0" style="width: 640px; height: 350px"></iframe>
+                    <iframe id="youtube" :src="youtubeId" frameborder="0" style="width: 640px; height: 350px"></iframe>
                   </div>
                 </div>
               </div>
@@ -115,6 +115,10 @@ export default {
           console.log(err)
         })
     },
+    stop: function () {
+      const video = document.querySelector("#youtube")
+      video.stopVideo()
+    }
   },
 }
 </script>
