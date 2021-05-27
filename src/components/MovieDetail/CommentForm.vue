@@ -44,7 +44,7 @@
             <!-- review end -->
           </div>
         </div>
-        <button class="btn btn-primary" @click.prevent="createComment"
+        <button class="btn btn-primary" @click.prevent="[createComment(), getReviews()]"
         data-bs-dismiss="modal" aria-label="Close">Submit</button>
       </form>
     </div>
@@ -104,8 +104,10 @@ export default {
       })
         .then(res => {
           const modal = document.querySelector('.modal')
+          console.log('we create')
           console.log(res)
           modal.classList.add('hidden')
+
         })
         .catch(err => {
           console.log(err)
@@ -118,11 +120,31 @@ export default {
     },
     initLocation: function () {
       this.locationInfo = this.$store.state.locationInfo
-    }
+    },
+    getReviews: function () {
+      console.log('getReviews 실행!')
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/movies/${this.currentLoc.id}/comments/`,
+        headers: this.setToken()
+      })
+        .then(res => {
+          for (let index = 0; index < res.data.length; index++) {
+            const element = res.data[index];
+            element.image = `${SERVER_URL}${element.image}`
+          }
+          console.log('<<<<<<<<<<<<<<<<<<<')
+          console.log(res.data)
+          this.$emit('trigger', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+          console.log(123123123)
+        })
+    },
   },
   created: function () {
     setTimeout(()=>{
-      console.log('qqqqqqqqqqqqqqqqqqq')
       console.log(this.$store.state.locationInfo)
       this.initLocation()
     }, 1000)
