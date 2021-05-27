@@ -39,7 +39,7 @@
         </div>
         <div class="p-3">
           <div class="my-1">
-            <p >장르 | {{ movieInfo.genres }}</p>
+            <p >장르 |</p>
           </div>
           <div class="my-1">
             <p>평점 | {{ movieInfo.vote_average }}점</p>
