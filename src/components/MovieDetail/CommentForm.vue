@@ -64,7 +64,6 @@ export default {
     StarRating,
   },
   props: {
-    movie: Object,
     currentLoc: Object,
   },
   data: function () {

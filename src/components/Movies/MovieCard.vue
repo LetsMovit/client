@@ -26,6 +26,7 @@ export default {
       // this.$router.push({ name: 'MovieDetail', params: {item : movie} })
       this.$router.push({ name: 'MovieDetail' })
       this.$store.dispatch('setMovie', movie)
+      console.log(movie, 'MMMMMMMMMMMMMMMVVVVVVVVVVVVVVV')
     },
   },
 }

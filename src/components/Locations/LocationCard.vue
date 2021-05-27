@@ -137,7 +137,7 @@ export default {
       this.addr = {lat: this.$store.state.currentLocation.lat,
                    lon: this.$store.state.currentLocation.lon}
       this.getLike()
-    }, 200)
+    }, 500)
   }
 }
 

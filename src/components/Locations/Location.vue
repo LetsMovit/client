@@ -80,6 +80,7 @@ export default {
     },
     getLocations () {
       var movie_id = this.movieInfo.id
+      console.log(this.movieInfo, 'asdfasfasdfasdf')
       axios({
         method: 'get',
         url: `${SERVER_URL}/movies/${movie_id}/locations/`,
