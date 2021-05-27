@@ -39,10 +39,14 @@
         </div>
         <div class="p-3">
           <div class="my-1">
-            <p >장르 |</p>
+            <span >장르 | </span>
+            <span class="m-1" v-for="genre in movieInfo.genres"
+            :key="genre.id"
+            >  {{ genre.genre_name }}   </span>
           </div>
           <div class="my-1">
-            <p>평점 | {{ movieInfo.vote_average }}점</p>
+            <span>평점 |  </span>
+            <span class="m-1">{{ movieInfo.vote_average }}점</span>
           </div>
           <div class="my-1">
             <p > 개요 |</p>
