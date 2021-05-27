@@ -106,7 +106,8 @@ export default {
         params,
       })
         .then(res => {
-          this.youtubeId += res.data.items[0].id.videoId
+          let url = res.data.items[0].id.videoId + '?version=3&enablejsapi=1'
+          this.youtubeId += url
           console.log(this.youtubeId)
         })
         .catch(err => {

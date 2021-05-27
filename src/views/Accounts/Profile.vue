@@ -25,7 +25,8 @@
                     <form>
                       <div class="form-group d-flex flex-column align-items-start">
                         <label for="exampleFormControlFile1">Update Your Image</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" @change="handleFileChange"/>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" 
+                        @change="handleFileChange"/>
                       </div>
                     </form>
                   </div>
@@ -70,9 +71,12 @@
                     No Like Locations!
                   </div> -->
                   <hr>
-                  <!-- comment 수정 -->
-                  <!-- <h3>My Comment</h3>
-                  {{ profile }} -->
+                  <div class="d-flex flex-column">
+                    <button class="btn btn-primary"
+                    data-bs-dismiss="modal" aria-label="Close"
+                    @click="editProfile(profile.user)"
+                    >Save</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,20 +162,34 @@ export default {
           console.log(err)
         })
     },
-    // editProfile: function () {
-    //   axios({
-    //     method: 'put',
-    //     url: `${SERVER_URL}/accounts/${this.$store.getters.decodedToken.username}/profile/`,
-    //     headers: this.setToken(),
-    //   })
-    //     .then(res => {
-    //       console.log('요청 보낸다!')
-    //       console.log(res)
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    // },
+    editProfile: function(user) {
+      let formData = new FormData();
+      if (this.image !== null) {
+        let imagefile = this.image
+        formData.append('image', imagefile)
+      }
+      axios({
+        method: 'put',
+        url: `${SERVER_URL}/accounts/${user.username}/profile/`,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `JWT ${this.$store.state.userToken}`          
+        },
+      })
+        .then(res => {
+          const modal = document.querySelector('.modal')
+          console.log('we change')
+          console.log(res)
+          modal.classList.add('hidden')
+          this.getProfile()
+          alert('수정완료되었습니다!')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
     getGenres: function () {
       axios({
         method: 'get',
