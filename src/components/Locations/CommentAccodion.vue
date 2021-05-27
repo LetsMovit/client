@@ -46,7 +46,7 @@
           <div class="modal-content p-4 mt-3" style="width: 50vw;">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                {{ movieInfo.title }}
+                New Comment
               </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -99,7 +99,6 @@ export default {
       return config
     },
     getReviews: function () {
-      console.log('getReviews 실행!')
       axios({
         method: 'get',
         url: `${SERVER_URL}/movies/${this.currentLoc.id}/comments/`,
@@ -111,20 +110,22 @@ export default {
             element.image = `${SERVER_URL}${element.image}`
           }
           this.comments = res.data
-          console.log('여길 봐!!!!!!!!!!!!!!!!!!!!')
-          console.log(this.comments)
         })
         .catch(err => {
           console.log(err)
-          console.log(123123123)
         })
+    },
+    trigger: function () {
+      setTimeout(()=>{
+        this.getReviews()
+      }, 1000)
     },
   },
   created: function () {
     setTimeout(()=>{
       this.getReviews()
     }, 2000)
-  }
+  },
 }
 </script>
 

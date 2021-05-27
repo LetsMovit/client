@@ -39,12 +39,17 @@
         </div>
         <div class="p-3">
           <div class="my-1">
-            <p >장르 | </p>
+            <p >장르 | {{ movieInfo.genres }}</p>
           </div>
           <div class="my-1">
-            <p > 개요 | <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 0; outline: 0;">click</button></p>
+            <p>평점 | {{ movieInfo.vote_average }}점</p>
+          </div>
+          <div class="my-1">
+            <p > 개요 |</p>
+            <p>{{ movieInfo.overview }}</p>
+            <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 0; outline: 0;">click</button> -->
           <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content p-5">
                   <div class="modal-header">
@@ -52,23 +57,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    {{ movieInfo.overview }}
+                    
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- modal end -->
-          </div>
-          <div class="my-1">
-            <p>평점 | {{ movieInfo.vote_average }}점</p>
-          </div>
-        </div>
-        <div class="my-5">
-          Rating
-          <hr>
-          <div class="p-3">
-            <p>별점</p>
-            <p >내가 작성한 후기</p>
           </div>
         </div>
         
