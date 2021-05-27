@@ -39,7 +39,12 @@
                     <div v-for="genre in genres"
                     :key="genre.genre_id"                    
                     class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                      <input class="form-check-input"
+                       type="checkbox" 
+                       id="inlineCheckbox1"
+                       v-model="like_genres"
+                       :value="genre.id"
+                       >
                       <label class="form-check-label" for="inlineCheckbox1">{{ genre.genre_name }}</label>
                     </div>
                     
@@ -176,8 +181,7 @@ export default {
       profile: this.getProfile(),
       genres: null,
       image: null,
-      like_genres: null
-
+      like_genres: [],
     }
   },
   methods: {
@@ -203,31 +207,62 @@ export default {
         })
     },
     editProfile: function(user) {
-      let formData = new FormData();
-      if (this.image !== null) {
+      if (this.image !== null) {      
+        let formData = new FormData();
         let imagefile = this.image
         formData.append('image', imagefile)
+        axios({
+          method: 'put',
+          url: `${SERVER_URL}/accounts/${user.username}/profile/`,
+          data: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `JWT ${this.$store.state.userToken}`          
+          },
+        })
+          .then(res => {
+            const modal = document.querySelector('.modal')
+            console.log('we change')
+            console.log(res)
+            modal.classList.add('hidden')
+            this.getProfile()
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
-      axios({
-        method: 'put',
-        url: `${SERVER_URL}/accounts/${user.username}/profile/`,
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `JWT ${this.$store.state.userToken}`          
-        },
-      })
-        .then(res => {
-          const modal = document.querySelector('.modal')
-          console.log('we change')
-          console.log(res)
-          modal.classList.add('hidden')
-          this.getProfile()
-          alert('수정완료되었습니다!')
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      // if (this.like_genres !== []) {
+
+      //   for (let index = 0; index < this.like_genres.length; index++) {
+      //     const element = this.like_genres[index];
+      //     console.log(element)          
+      //   }
+
+      //   let formData = new FormData();
+      //   let genres = this.like_genres
+      //   formData.append('like_genres', genres)
+      //   axios({
+      //     method: 'put',
+      //     url: `${SERVER_URL}/accounts/${user.username}/`,
+      //     data: formData,
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'Authorization': `JWT ${this.$store.state.userToken}`          
+      //     },
+      //   })
+      //     .then(res => {
+      //       const modal = document.querySelector('.modal')
+      //       console.log('we change')
+      //       console.log(res)
+      //       modal.classList.add('hidden')
+      //       this.getProfile()
+      //       this.like_genres = []
+      //       alert('수정완료되었습니다!')
+      //     })
+      //     .catch(err => {
+      //       console.log(err)
+      //     })
+      // }
     },
 
     getGenres: function () {
