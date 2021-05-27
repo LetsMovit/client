@@ -30,43 +30,7 @@
                       </div>
                     </form>
                   </div>
-                  <!-- file upload end -->
-
-                  <hr>
-                  <!-- genre 수정 -->
-                  <h3>Like Genre</h3>
-                  <!-- {{ genres }} -->
-                    <div v-for="genre in genres"
-                    :key="genre.genre_id"                    
-                    class="form-check form-check-inline">
-                      <input class="form-check-input"
-                       type="checkbox" 
-                       id="inlineCheckbox1"
-                       v-model="like_genres"
-                       :value="genre.id"
-                       >
-                      <label class="form-check-label" for="inlineCheckbox1">{{ genre.genre_name }}</label>
-                    </div>
-                    
-                
-                  <hr>
-                  <!-- place 수정 -->
-                  <h3>Like Place</h3>
-                  <div>
-                    <!-- {{ profile.user.like_locations }} -->
-                    <p v-for="location in profile.user.like_locations"
-                    :key="location.id">
-                      {{ location.name }}
-                      <button v-if="location in profile.user.like_locations" class="border-0 bg-transparent" 
-                      @click="clickUnlike(location)">
-                        🤍
-                      </button>
-                      <button v-else class="border-0 bg-transparent" 
-                      @click="clickUnlike(location)">
-                        ❤️
-                      </button>
-                    </p>
-                  </div>  
+                  <!-- file upload end -->                    
                   <!-- <div v-if="profile.user.like_locations" :v-for="location in profile.user.like_locations"
                   :key="location.id"
                   > -->
@@ -75,7 +39,6 @@
                   <!-- <div v-else>
                     No Like Locations!
                   </div> -->
-                  <hr>
                   <div class="d-flex flex-column">
                     <button class="btn btn-primary"
                     data-bs-dismiss="modal" aria-label="Close"
@@ -97,57 +60,75 @@
           </div>
           <div class="card-footer">
             <div class="row">
-              <div class="col-sm-6 border-right">
-                <button data-bs-toggle="modal" data-bs-target="#likegenremodal"
-                 style="border: 0; outline: 0; background-color: transparent;">
-                 <!-- likegenre modal start -->
-                <div class="modal fade" id="likegenremodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
-                    <div class="modal-content p-4 mt-3" style="width: 50vw;">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                          Like Genre
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div v-for="genre in profile.user.like_genres" :key="genre.genre_id" class="modal-body">
-                        {{ genre.genre_name }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                 <!-- likegenre modal end -->
-                <div class="description-block">
-                  <h5 class="description-header">{{ profile.user.like_genres.length }}</h5>
-                  <span class="description-text">Like Genre</span>
-                </div>
-                </button>
-                <!-- /.description-block -->
-              </div>
               <!-- /.col -->
-              <div class="col-sm-6">
+              <div class="col-sm-6 border-right">
                 <button data-bs-toggle="modal" data-bs-target="#likeplacemodal"
                  style="border: 0; outline: 0; background-color: transparent;">
-                 <!-- likegenre modal start -->
-                <div class="modal fade" id="likeplacemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
+                 <!-- likeplace modal start -->
+                <div class="modal fade" id="likeplacemodal"
+                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog d-flex justify-content-center">
                     <div class="modal-content p-4 mt-3" style="width: 50vw;">
                       <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
                           Like Place
                         </h5>
+                        <button class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <!-- {{ profile.user.like_locations }} -->
+                      <div class="modal-body">
+                        <p v-for="location in profile.user.like_locations"
+                        :key="location.id">
+                          {{ location.name }}
+                          <button v-if="location in profile.user.like_locations" class="border-0 bg-transparent" 
+                          @click="clickUnlike(location)">
+                            🤍
+                          </button>
+                          <button v-else class="border-0 bg-transparent" 
+                          @click="clickUnlike(location)">
+                            ❤️
+                          </button>
+                        </p>
+                      </div>
+                      <!-- <div v-for="location in profile.user.like_locations" :key="location.id" class="modal-body">
+                        {{ location.name }}
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                 <!-- likeplace modal end -->
+                <div class="description-block">
+                  <h5 class="description-header">{{ profile.user.like_locations.length }}</h5>
+                  <span class="description-text">Like Place</span>
+                </div>
+                </button>
+                <!-- /.description-block -->
+              </div>
+              <div class="col-sm-6">
+                <button data-bs-toggle="modal" data-bs-target="#mycommentmodal"
+                 style="border: 0; outline: 0; background-color: transparent;">
+                 <!-- mycomment modal start -->
+                <div class="modal fade" id="mycommentmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
+                    <div class="modal-content p-4 mt-3" style="width: 40vw;">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          <b>My Comments</b>
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <div v-for="location in profile.user.like_locations" :key="location.id" class="modal-body">
-                        {{ location.name }}
+                      <ul>
+                      <div v-for="(comment, index) in profile.user.comments" :key="index"  class="modal-body">
+                        <li>{{ comment.content }}</li>
                       </div>
+                      </ul>
                     </div>
                   </div>
                 </div>
                  <!-- likegenre modal end -->
                 <div class="description-block">
-                  <h5 class="description-header">{{ profile.user.like_locations.length }}</h5>
-                  <span class="description-text">Like Place</span>
+                  <h5 class="description-header">{{ profile.user.comments.length }}</h5>
+                  <span class="description-text">My Comments</span>
                 </div>
                 </button>
                 <!-- /.description-block -->
