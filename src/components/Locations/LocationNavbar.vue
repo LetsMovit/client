@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-5">
+    <div class="col-5 my-2">
       <span class="fs-2 fw-bolder"> Related locations </span>
     </div>
     <div class="col-7 d-flex">

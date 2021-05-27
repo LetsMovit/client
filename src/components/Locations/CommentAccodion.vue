@@ -6,15 +6,26 @@
           <!-- 0번째일때 start -->
           <div v-if="index === 0">
             <h2 class="accordion-header" :id="'heading' + index">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              <button class="accordion-button justify-content-end" type="button" data-bs-toggle="collapse"
               :data-bs-target="'#collapse' + index" aria-expanded="true" :aria-controls="index">
-                {{ comment.title }}
+              <!-- review 제목 -->
+                <div class="">
+                  <span>{{ comment.title }}</span>
+                  <span>by. {{ comment.user.username }}</span>
+                </div>
               </button>
             </h2>
             <div :id="'collapse' + index" class="accordion-collapse collapse show" :aria-labelledby="'heading' + index"
             data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <img :src="comment.image" alt="" style="max-width: 15vw;">
+              <div class="d-flex flex-row">
+                <!-- review 이미지 -->
+                <div class="accordion-body">
+                  <img :src="comment.image" alt="" style="max-width: 15vw;">
+                </div>
+                <!-- review 내용 -->
+                <div class="my-3 mx-3">
+                  {{ comment.content }}
+                </div>
               </div>
             </div>
           </div>
@@ -24,13 +35,22 @@
             <h2 class="accordion-header" :id="'heading' + index">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               :data-bs-target="'#collapse' + index" aria-expanded="false" :aria-controls="index">
-                {{ comment.title }}
+              <!-- review 제목 -->
+                <span>{{ comment.title }}</span>
+                <span>by. {{ comment.user.username }}</span>
               </button>
             </h2>
             <div :id="'collapse' + index" class="accordion-collapse collapse" :aria-labelledby="'heading' + index"
             data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <img :src="comment.image" alt="" style="max-width: 15vw;">
+              <div class="d-flex flex-row">
+                <!-- review 이미지 -->
+                <div class="accordion-body">
+                  <img :src="comment.image" alt="" style="max-width: 15vw;">
+                </div>
+                <!-- review 내용 -->
+                <div class="my-3 mx-3">
+                  {{ comment.content }}
+                </div>
               </div>
             </div>
           </div>
@@ -130,6 +150,8 @@ export default {
 </script>
 
 <style>
-
+.accordion-button {
+  justify-content: space-between !important;
+}
 
 </style>

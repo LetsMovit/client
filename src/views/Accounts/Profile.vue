@@ -93,18 +93,58 @@
           <div class="card-footer">
             <div class="row">
               <div class="col-sm-6 border-right">
+                <button data-bs-toggle="modal" data-bs-target="#likegenremodal"
+                 style="border: 0; outline: 0; background-color: transparent;">
+                 <!-- likegenre modal start -->
+                <div class="modal fade" id="likegenremodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
+                    <div class="modal-content p-4 mt-3" style="width: 50vw;">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Like Genre
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div v-for="genre in profile.user.like_genres" :key="genre.genre_id" class="modal-body">
+                        {{ genre.genre_name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 <!-- likegenre modal end -->
                 <div class="description-block">
                   <h5 class="description-header">{{ profile.user.like_genres.length }}</h5>
                   <span class="description-text">Like Genre</span>
                 </div>
+                </button>
                 <!-- /.description-block -->
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
+                <button data-bs-toggle="modal" data-bs-target="#likeplacemodal"
+                 style="border: 0; outline: 0; background-color: transparent;">
+                 <!-- likegenre modal start -->
+                <div class="modal fade" id="likeplacemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog d-flex justify-content-center" style="all:initial; text-align: center;">
+                    <div class="modal-content p-4 mt-3" style="width: 50vw;">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Like Place
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div v-for="location in profile.user.like_locations" :key="location.id" class="modal-body">
+                        {{ location.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 <!-- likegenre modal end -->
                 <div class="description-block">
                   <h5 class="description-header">{{ profile.user.like_locations.length }}</h5>
                   <span class="description-text">Like Place</span>
                 </div>
+                </button>
                 <!-- /.description-block -->
               </div>
               <!-- /.col -->

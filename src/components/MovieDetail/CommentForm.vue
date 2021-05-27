@@ -104,10 +104,12 @@ export default {
       })
         .then(res => {
           const modal = document.querySelector('.modal')
-          console.log('we create')
           console.log(res)
+          this.title = null,
+          this.image= null,
+          this.review= '',
+          this.rate = null,
           modal.classList.add('hidden')
-
         })
         .catch(err => {
           console.log(err)
