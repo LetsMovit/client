@@ -30,7 +30,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="stop"></button>
                   </div>
                   <div class="modal-body">
-                    <iframe id="youtube" :src="youtubeId" frameborder="0" style="width: 640px; height: 350px"></iframe>
+                    <iframe :src="youtubeId" frameborder="0" style="width: 640px; height: 350px"></iframe>
                   </div>
                 </div>
               </div>
@@ -114,8 +114,10 @@ export default {
         })
     },
     stop: function () {
-      const video = document.querySelector("#youtube")
-      video.stopVideo()
+      var iframe = document.getElementsByTagName("iframe")[0];
+      var url = iframe.getAttribute('src')
+      iframe.setAttribute('src', '')
+      iframe.setAttribute('src', url)
     }
   },
 }
